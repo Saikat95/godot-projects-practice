@@ -1,0 +1,178 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Character/dino.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assests/floor_pad.png" type="Texture" id=2]
+[ext_resource path="res://Assests/background.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Background.gd" type="Script" id=4]
+[ext_resource path="res://Assests/floor.png" type="Texture" id=5]
+[ext_resource path="res://Character/obstacles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/MainScene.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/SpawnTimer.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=9]
+[ext_resource path="res://Assests/terminal.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assests/start.png" type="Texture" id=11]
+[ext_resource path="res://Assests/reload.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Restart_button.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Buttons.gd" type="Script" id=14]
+[ext_resource path="res://Assests/hit.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Assests/jump.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Assests/bg.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Scripts/Music.gd" type="Script" id=18]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "floor_pad.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=4]
+size = 21
+outline_size = 1
+font_data = ExtResource( 10 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 508.988, 480.841 ],
+"_edit_vertical_guides_": [ 2000.33, 1208.12 ]
+}
+
+[node name="Player" parent="." groups=[
+"Player",
+] instance=ExtResource( 1 )]
+position = Vector2( 146.967, 472.956 )
+scale = Vector2( 1.636, 1.636 )
+
+[node name="Ground" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0 )
+
+[node name="Background" type="ParallaxBackground" parent="."]
+script = ExtResource( 4 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 850, 0 )
+
+[node name="background" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 543.399, 328.078 )
+scale = Vector2( 0.819673, 1.04409 )
+texture = ExtResource( 3 )
+
+[node name="floor" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 586.986, 538.326 )
+scale = Vector2( 1.04732, 0.643993 )
+texture = ExtResource( 5 )
+
+[node name="Obstacle" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1156.33, 488.628 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 8 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 874.306
+margin_top = 13.1889
+margin_right = 944.306
+margin_bottom = 37.1889
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Score : 0"
+valign = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+script = ExtResource( 14 )
+
+[node name="Start" type="Button" parent="Buttons"]
+margin_left = 421.461
+margin_top = 269.058
+margin_right = 462.461
+margin_bottom = 289.058
+rect_scale = Vector2( 3.86808, 2.91219 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Sprite" parent="Buttons/Start"]
+position = Vector2( 20.5061, 9.99801 )
+scale = Vector2( 0.242894, -0.339806 )
+texture = ExtResource( 11 )
+
+[node name="Restart" type="Button" parent="Buttons"]
+visible = false
+margin_left = 421.73
+margin_top = 260.657
+margin_right = 476.73
+margin_bottom = 324.657
+rect_scale = Vector2( 2.85527, 1.10996 )
+text = "Reload"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reload" type="Sprite" parent="Buttons/Restart"]
+position = Vector2( 27.736, 31.4029 )
+scale = Vector2( 0.32093, 0.887044 )
+texture = ExtResource( 12 )
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 18 )
+
+[node name="bgMusic" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource( 17 )
+
+[node name="hit" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource( 15 )
+pitch_scale = 1.5
+
+[node name="jump" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource( 16 )
+attenuation = 0.07966
+
+[connection signal="player_hit" from="Player" to="Background" method="_on_Player_player_hit"]
+[connection signal="player_hit" from="Player" to="SpawnTimer" method="_on_Player_player_hit"]
+[connection signal="player_hit" from="Player" to="Obstacle" method="_on_Player_player_hit"]
+[connection signal="player_hit" from="Player" to="." method="_on_Player_player_hit"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="pressed" from="Buttons/Start" to="Buttons" method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Restart" to="Buttons" method="_on_Restart_pressed"]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/sprite-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/VideoTerminalScreen.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Actor/Paddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Screens/SelectPaddle.gd" type="Script" id=4]
+[ext_resource path="res://Screens/PlayScene.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+extra_spacing_char = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 70
+font_data = ExtResource( 2 )
+
+[node name="SelectPaddle" type="Node2D"]
+script = ExtResource( 4 )
+next_scene = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 0.821158, 0.916911 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 189.522, 2299.76, 1290.22, 687.054 )
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_left = 0.128906
+anchor_top = 0.253333
+anchor_right = 0.871094
+anchor_bottom = 0.365
+custom_fonts/font = SubResource( 1 )
+text = "SELECT PADDLE"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Paddle" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 508.333, 337 )
+
+[node name="ChangeLeft" type="Button" parent="CanvasLayer"]
+margin_left = 208.0
+margin_top = 304.0
+margin_right = 270.0
+margin_bottom = 393.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangeRight" type="Button" parent="CanvasLayer"]
+margin_left = 736.0
+margin_top = 304.0
+margin_right = 798.0
+margin_bottom = 393.0
+custom_fonts/font = SubResource( 2 )
+keep_pressed_outside = true
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 448.0
+margin_top = 448.0
+margin_right = 608.0
+margin_bottom = 536.0
+custom_fonts/font = SubResource( 3 )
+text = "GO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/ChangeLeft" to="." method="_on_ChangeLeft_pressed"]
+[connection signal="pressed" from="CanvasLayer/ChangeRight" to="." method="_on_ChangeRight_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]

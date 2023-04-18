@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/sky.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Pipes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actor/Bird.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Ground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UserInterface/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MainScreen.gd" type="Script" id=6]
+[ext_resource path="res://Assets/House In a Forest Loop.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/gameover.wav" type="AudioStream" id=8]
+
+[node name="MainScreen" type="Node2D"]
+position = Vector2( 0, -1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 448.0, 144.0, 144.0, -128.0, 704.0, 136.0, 440.0, 598.9, 598.9 ],
+"_edit_vertical_guides_": [ 912.0, 1152.0, 1536.0, 1024.0, 1144.0, 2568.0 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bird" parent="." instance=ExtResource( 3 )]
+position = Vector2( 496, 305 )
+
+[node name="Resetter" parent="Bird" index="3"]
+position = Vector2( -1344, 64 )
+
+[node name="Pipes" type="Node2D" parent="."]
+position = Vector2( 1344, 352 )
+
+[node name="Pipes" parent="Pipes" instance=ExtResource( 2 )]
+position = Vector2( -232, 0 )
+
+[node name="Pipes2" parent="Pipes" instance=ExtResource( 2 )]
+position = Vector2( 72, -43.454 )
+
+[node name="Pipes3" parent="Pipes" instance=ExtResource( 2 )]
+position = Vector2( 392, -7 )
+
+[node name="Pipes4" parent="Pipes" instance=ExtResource( 2 )]
+position = Vector2( 696, -7 )
+
+[node name="Pipes5" parent="Pipes" instance=ExtResource( 2 )]
+position = Vector2( 992, -43.454 )
+
+[node name="UserInerface" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="UI" parent="UserInerface" instance=ExtResource( 5 )]
+margin_top = -1.0
+margin_bottom = -1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 3, 3 )
+
+[node name="Ground" parent="." instance=ExtResource( 4 )]
+position = Vector2( 587, 577 )
+
+[node name="Grass" parent="Ground" index="0"]
+position = Vector2( 0, 8 )
+
+[node name="grass" parent="Ground/Grass" index="0"]
+position = Vector2( 325, -8 )
+region_rect = Rect2( 6.1228, 17.3176, 9232.76, 292.05 )
+
+[node name="CollisionShape2D" parent="Ground/Grass" index="1"]
+position = Vector2( -66.9998, 0 )
+
+[node name="GameSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 8 )
+
+[connection signal="hit" from="Bird" to="." method="_on_Bird_hit"]
+[connection signal="start_game" from="UserInerface/UI" to="." method="_on_UI_start_game"]
+
+[editable path="Bird"]
+[editable path="Ground"]

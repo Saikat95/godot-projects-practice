@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actor/stick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actor/StickLeft.gd" type="Script" id=2]
+
+[node name="StickLeft" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 1000

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/sprite-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Actor/Ball.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 58.5722
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 62.8526
+
+[node name="Ball" type="KinematicBody2D"]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 25.935 ]
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 0.0588235, 0.0588235, 1 )
+position = Vector2( 0.561234, 3.36739 )
+shape = SubResource( 1 )
+
+[node name="sprite-sheet" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1551.9, 656.116, 794.906, 782.922 )
+
+[node name="BodyCollision" type="Area2D" parent="."]
+pause_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyCollision"]
+modulate = Color( 0.168627, 0.894118, 0.34902, 1 )
+position = Vector2( 0.589924, 2.35969 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="body_entered" from="BodyCollision" to="." method="_on_BodyCollision_body_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

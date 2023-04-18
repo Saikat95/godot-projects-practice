@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://dodge_assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=2]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="ScoreLable" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -22.5
+margin_right = 22.5
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageLable" type="Label" parent="."]
+anchor_top = 0.308
+anchor_right = 1.0
+anchor_bottom = 0.537
+margin_top = 0.239975
+margin_bottom = 0.359985
+custom_fonts/font = SubResource( 1 )
+text = "DODGE THE CREEPERS"
+align = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.0677266
+anchor_top = 0.782075
+anchor_right = 0.94
+anchor_bottom = 0.941
+margin_top = -0.09375
+margin_right = 0.105255
+margin_bottom = -0.186279
+custom_fonts/font = SubResource( 1 )
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = SubResource( 2 )
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

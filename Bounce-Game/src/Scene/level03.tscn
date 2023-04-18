@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tile.png" type="Texture" id=2]
+[ext_resource path="res://src/Actor/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/ROGFonts-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/Objects/platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/User Interface/UserInterface.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 5 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 11, 8, 156, 8, 155, 131, 11, 128 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 166, 0, 166, 143, 0, 143 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 166, 143, 0, 143, 0, 0, 166, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 151, 3, 166, 3, 166, 18, 151, 18 )
+
+[sub_resource type="TileSet" id=6]
+0/name = "tile.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 166, 143 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="Level3" type="Node2D"]
+position = Vector2( 0, -4.79988 )
+__meta__ = {
+"_edit_vertical_guides_": [ 3650.06, 2070.05 ]
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1072.0
+margin_top = 189.0
+margin_right = 1223.0
+margin_bottom = 209.0
+rect_scale = Vector2( 5, 5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.701961, 0.360784, 1 )
+custom_colors/font_outline_modulate = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "You have Won"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" parent="PauseMenu" instance=ExtResource( 8 )]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+margin_left = -0.840881
+margin_right = 1349.16
+margin_bottom = 641.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.5, 0.5 )
+tile_set = SubResource( 6 )
+cell_size = Vector2( 166, 144 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 1610612736, 0, 1, 1610612736, 0, 2, 1610612736, 0, 3, 1610612736, 0, 4, 1610612736, 0, 5, 1610612736, 0, 6, 1610612736, 0, 7, 1610612736, 0, 8, 1610612736, 0, 9, 1610612736, 0, 10, 1610612736, 0, 11, 1610612736, 0, 12, 1610612736, 0, 13, 1610612736, 0, 14, 1610612736, 0, 15, 1610612736, 0, 16, 1610612736, 0, 17, 1610612736, 0, 18, 1610612736, 0, 19, 1610612736, 0, 20, 1610612736, 0, 21, 1610612736, 0, 22, 1610612736, 0, 23, 1610612736, 0, 24, 1610612736, 0, 25, 1610612736, 0, 26, 1610612736, 0, 27, 1610612736, 0, 28, 1610612736, 0, 29, 1610612736, 0, 30, 1610612736, 0, 31, 1610612736, 0, 32, 1610612736, 0, 33, 1610612736, 0, 34, 1610612736, 0, 35, 1610612736, 0, 36, 1610612736, 0, 37, 1610612736, 0, 38, 1610612736, 0, 39, 1610612736, 0, 40, 1610612736, 0, 41, 1610612736, 0, 42, 1610612736, 0, 43, 1610612736, 0, 65536, 1610612736, 0, 65537, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 65562, 0, 0, 65563, 0, 0, 65564, 0, 0, 65578, 1610612736, 0, 65579, 1610612736, 0, 131072, 1610612736, 0, 131073, 0, 0, 131074, 0, 0, 131095, 0, 0, 131096, 0, 0, 131097, 0, 0, 131098, 0, 0, 131099, 0, 0, 131100, 0, 0, 131114, 1610612736, 0, 131115, 1610612736, 0, 196608, 1610612736, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196650, 1610612736, 0, 196651, 1610612736, 0, 262144, 1610612736, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 262171, 0, 0, 262172, 0, 0, 262182, 1610612736, 0, 262183, 1610612736, 0, 262184, 1610612736, 0, 262185, 1610612736, 0, 262186, 1610612736, 0, 262187, 1610612736, 0, 327680, 1610612736, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327718, 1610612736, 0, 327719, 1610612736, 0, 327720, 1610612736, 0, 327721, 1610612736, 0, 327722, 1610612736, 0, 327723, 1610612736, 0, 393216, 1610612736, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393254, 1610612736, 0, 393255, 1610612736, 0, 393256, 1610612736, 0, 393257, 1610612736, 0, 393258, 1610612736, 0, 393259, 1610612736, 0, 458752, 1610612736, 0, 458753, 1610612736, 0, 458754, 1610612736, 0, 458755, 1610612736, 0, 458756, 1610612736, 0, 458757, 1610612736, 0, 458758, 1610612736, 0, 458759, 1610612736, 0, 458760, 1610612736, 0, 458761, 1610612736, 0, 458762, 1610612736, 0, 458763, 1610612736, 0, 458764, 1610612736, 0, 458765, 1610612736, 0, 458766, 1610612736, 0, 458767, 1610612736, 0, 458768, 1610612736, 0, 458769, 1610612736, 0, 458770, 1610612736, 0, 458771, 1610612736, 0, 458772, 1610612736, 0, 458773, 1610612736, 0, 458774, 1610612736, 0, 458775, 1610612736, 0, 458776, 1610612736, 0, 458777, 1610612736, 0, 458778, 1610612736, 0, 458779, 0, 0, 458780, 1610612736, 0, 458781, 1610612736, 0, 458782, 1610612736, 0, 458783, 1610612736, 0, 458784, 1610612736, 0, 458785, 1610612736, 0, 458786, 1610612736, 0, 458787, 1610612736, 0, 458788, 1610612736, 0, 458789, 1610612736, 0, 458790, 1610612736, 0, 458791, 1610612736, 0, 458792, 1610612736, 0, 458793, 1610612736, 0, 458794, 1610612736, 0, 458795, 1610612736, 0, 524288, 1610612736, 0, 524289, 1610612736, 0, 524290, 1610612736, 0, 524291, 1610612736, 0, 524292, 1610612736, 0, 524293, 1610612736, 0, 524294, 1610612736, 0, 524295, 1610612736, 0, 524296, 1610612736, 0, 524297, 1610612736, 0, 524298, 1610612736, 0, 524299, 1610612736, 0, 524300, 1610612736, 0, 524301, 1610612736, 0, 524302, 1610612736, 0, 524303, 1610612736, 0, 524304, 1610612736, 0, 524305, 1610612736, 0, 524306, 1610612736, 0, 524307, 1610612736, 0, 524308, 1610612736, 0, 524309, 1610612736, 0, 524310, 1610612736, 0, 524311, 1610612736, 0, 524312, 1610612736, 0, 524313, 1610612736, 0, 524314, 1610612736, 0, 524315, 1610612736, 0, 524316, 1610612736, 0, 524317, 1610612736, 0, 524318, 1610612736, 0, 524319, 1610612736, 0, 524320, 1610612736, 0, 524321, 1610612736, 0, 524322, 1610612736, 0, 524323, 1610612736, 0, 524324, 1610612736, 0, 524325, 1610612736, 0, 524326, 1610612736, 0, 524327, 1610612736, 0, 524328, 1610612736, 0, 524329, 1610612736, 0, 524330, 1610612736, 0, 524331, 1610612736, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 293.894, 115.462 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="CollisionShape2D" parent="Player" index="1"]
+position = Vector2( 8.87439, 5.85028 )
+
+[node name="Camera2D" parent="Player" index="2"]
+limit_right = 2070
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 378.965, 239.401 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 456, 316.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 544, 388.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 896, 388.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 968, 324.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 1056, 292.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 1144, 316.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 1 )]
+position = Vector2( 1208, 380.8 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="platform" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1624, 440.163 )
+
+[editable path="Player"]

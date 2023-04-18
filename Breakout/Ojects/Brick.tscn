@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/sprite-sheet.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.3609, 29.9787 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27.0617, 25.8448 )
+
+[node name="BrickElement" type="Node2D"]
+
+[node name="Brick" type="StaticBody2D" parent="."]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Green" type="Area2D" parent="Brick"]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Brick/Green"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 58.6105, 638.103, 352.455, 339.204 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick/Green"]
+shape = SubResource( 1 )
+
+[node name="Blue" type="Area2D" parent="Brick"]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Brick/Blue"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 408.044, 653.819, 333.111, 334.461 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick/Blue"]
+shape = SubResource( 1 )
+
+[node name="Red" type="Area2D" parent="Brick"]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Brick/Red"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 764.532, 647.376, 337.007, 340.903 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick/Red"]
+shape = SubResource( 1 )
+
+[node name="Yellow" type="Area2D" parent="Brick"]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Brick/Yellow"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1121.02, 653.22, 329.215, 337.007 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick/Yellow"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brick"]
+self_modulate = Color( 0, 0.368627, 1, 1 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Brick/Green" to="." method="_on_Green_body_entered"]
+[connection signal="body_entered" from="Brick/Blue" to="." method="_on_Blue_body_entered"]
+[connection signal="body_entered" from="Brick/Red" to="." method="_on_Red_body_entered"]
+[connection signal="body_entered" from="Brick/Yellow" to="." method="_on_Yellow_body_entered"]

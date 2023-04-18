@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_cartoon_honk_horn_or_whistle_003_23532.mp3-f90b596aba66f20e7d2d0a1551c71d51.mp3str"
+
+[deps]
+
+source_file="res://Assets/zapsplat_cartoon_honk_horn_or_whistle_003_23532.mp3"
+dest_files=[ "res://.import/zapsplat_cartoon_honk_horn_or_whistle_003_23532.mp3-f90b596aba66f20e7d2d0a1551c71d51.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

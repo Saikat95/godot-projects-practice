@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sport_table_tennis_ping_pong_bat_hit_ball_001.mp3-fb9e2d21103b07f41241790c40d27f4e.mp3str"
+
+[deps]
+
+source_file="res://Assets/sport_table_tennis_ping_pong_bat_hit_ball_001.mp3"
+dest_files=[ "res://.import/sport_table_tennis_ping_pong_bat_hit_ball_001.mp3-fb9e2d21103b07f41241790c40d27f4e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

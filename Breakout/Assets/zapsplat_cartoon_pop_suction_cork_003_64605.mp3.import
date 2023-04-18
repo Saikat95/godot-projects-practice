@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_cartoon_pop_suction_cork_003_64605.mp3-0027dd93faa7265d2e5b0fad3ca75756.mp3str"
+
+[deps]
+
+source_file="res://Assets/zapsplat_cartoon_pop_suction_cork_003_64605.mp3"
+dest_files=[ "res://.import/zapsplat_cartoon_pop_suction_cork_003_64605.mp3-0027dd93faa7265d2e5b0fad3ca75756.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

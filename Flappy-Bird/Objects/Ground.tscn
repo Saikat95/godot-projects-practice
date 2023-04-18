@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/grass_group_2.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Ground.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 544, 24 )
+
+[node name="Ground" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Grass" type="StaticBody2D" parent="."]
+
+[node name="grass" type="Sprite" parent="Grass"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 6.1228, 13.3231, 11133.4, 296.045 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass"]
+position = Vector2( 56, 8 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}

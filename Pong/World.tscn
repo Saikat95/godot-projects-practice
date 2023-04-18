@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/border.png" type="Texture" id=1]
+[ext_resource path="res://Assets/background.jpg" type="Texture" id=2]
+[ext_resource path="res://actor/StickLeft.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actor/ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World.gd" type="Script" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actor/StickRight.tscn" type="PackedScene" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "border.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 64, 64, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 560, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 336 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, 65535, 0, 0, 131071, 0, 0, 65567, 0, 0, 196607, 0, 0, 131103, 0, 0, 262143, 0, 0, 196639, 0, 0, 327679, 0, 0, 262175, 0, 0, 393215, 0, 0, 327711, 0, 0, 458751, 0, 0, 524287, 0, 0, 458783, 0, 0, 589823, 0, 0, 655359, 0, 0, 589855, 0, 0, 720895, 0, 0, 655391, 0, 0, 786431, 0, 0, 720927, 0, 0, 851967, 0, 0, 786463, 0, 0, 917503, 0, 0, 851999, 0, 0, 983039, 0, 0, 917535, 0, 0, 1048575, 0, 0, 983071, 0, 0, 1114111, 0, 0, 1048607, 0, 0, 1179647, 0, 0, 1114143, 0, 0, 1245183, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0 )
+
+[node name="WallCollision" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="Collision" type="CollisionShape2D" parent="WallCollision"]
+position = Vector2( 512, 0 )
+shape = SubResource( 2 )
+
+[node name="Collision2" type="CollisionShape2D" parent="WallCollision"]
+position = Vector2( 512, 608 )
+shape = SubResource( 2 )
+
+[node name="ball" parent="." instance=ExtResource( 4 )]
+position = Vector2( 512, 320 )
+
+[node name="StickLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 320 )
+
+[node name="StickRight" parent="." instance=ExtResource( 7 )]
+position = Vector2( 960, 320 )
+
+[node name="StickLeftWall" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StickLeftWall"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -16, 312 )
+shape = SubResource( 3 )
+
+[node name="StickRightWall" type="Area2D" parent="."]
+modulate = Color( 0.0431373, 0.360784, 0.803922, 1 )
+position = Vector2( 1056, 0 )
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StickRightWall"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -16, 312 )
+shape = SubResource( 3 )
+
+[node name="UI" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 512.0
+margin_top = 328.0
+margin_right = 512.0
+margin_bottom = 328.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserInterface" parent="UI" instance=ExtResource( 6 )]
+
+[node name="Label" parent="UI/UserInterface" index="2"]
+margin_top = -288.0
+margin_bottom = 234.0
+
+[node name="StartButton" parent="UI/UserInterface" index="3"]
+margin_top = -80.0
+margin_bottom = 23.0
+
+[node name="ReplayButton" parent="UI/UserInterface" index="4"]
+margin_top = -80.0
+margin_bottom = 32.0
+
+[node name="WinMessage" parent="UI/UserInterface" index="5"]
+margin_top = -208.0
+margin_bottom = -128.0
+
+[connection signal="area_entered" from="StickLeftWall" to="." method="_on_StickLeftWall_area_entered"]
+[connection signal="area_entered" from="StickRightWall" to="." method="_on_StickRightWall_area_entered"]
+[connection signal="replay_game" from="UI/UserInterface" to="." method="new_game"]
+[connection signal="start_game" from="UI/UserInterface" to="." method="new_game"]
+
+[editable path="UI/UserInterface"]

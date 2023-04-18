@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/sprite-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/37456_TERMINAL.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/VideoTerminalScreen.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Screens/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://Screens/SelectPaddle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/music_zapsplat_tuff_enough.mp3" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 130
+extra_spacing_char = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+extra_spacing_char = 15
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 4 )
+next_scene = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Backgorund" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 0.793184, 0.870827 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 187.967, 2296.17, 1291.66, 689.752 )
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_left = 0.0546875
+anchor_top = 0.173333
+anchor_right = 0.955078
+anchor_bottom = 0.405
+custom_fonts/font = SubResource( 1 )
+text = "BREAKOUT"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchor_left = 0.398438
+anchor_top = 0.586667
+anchor_right = 0.609375
+anchor_bottom = 0.746667
+custom_fonts/font = SubResource( 2 )
+text = "PLAY"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]

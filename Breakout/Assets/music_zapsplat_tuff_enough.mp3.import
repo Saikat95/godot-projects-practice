@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/music_zapsplat_tuff_enough.mp3-3b1c72aa282446ebc1e444a3c7b1e90a.mp3str"
+
+[deps]
+
+source_file="res://Assets/music_zapsplat_tuff_enough.mp3"
+dest_files=[ "res://.import/music_zapsplat_tuff_enough.mp3-3b1c72aa282446ebc1e444a3c7b1e90a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

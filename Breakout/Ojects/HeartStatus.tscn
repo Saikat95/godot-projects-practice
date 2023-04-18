@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/sprite-sheet.png" type="Texture" id=1]
+
+[node name="HeartStatus" type="Node2D"]
+
+[node name="Empty" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 520.599, 1020.51, 456.175, 460.186 )
+
+[node name="Full" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 47.1715, 997.386, 475.814, 485.884 )
