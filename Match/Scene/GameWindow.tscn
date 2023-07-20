@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/bg.png" type="Texture" id=1]
+[ext_resource path="res://Scene/Top_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/EndScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/shape7.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Grid.gd" type="Script" id=5]
+[ext_resource path="res://Assets/end_bg.png" type="Texture" id=6]
+[ext_resource path="res://Scene/PauseScene.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bg_dull"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("end_bg:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.588235, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "end_scene"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("EndScene:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7 )
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("PauseMenu:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "dull_bg"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("end_bg:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.588235, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[node name="GameWindow" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 299.788, -43.2658, 832.144, 299.0, 830.506, 838.543 ],
+"_edit_vertical_guides_": [ 667.196, 63.8485, 64.0, 668.762 ]
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 600.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.957452, 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom_ui" type="TextureRect" parent="."]
+margin_top = 893.707
+margin_right = 576.0
+margin_bottom = 1021.71
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top_ui" parent="." instance=ExtResource( 2 )]
+anchor_bottom = 1.0
+game_timer = 100
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource( 5 )
+height = 8
+width = 8
+x_start = 64
+y_start = 800
+offset = 64
+total_move_count = 5
+
+[node name="Tween" type="Tween" parent="Grid"]
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="end_bg" type="Sprite" parent="."]
+modulate = Color( 0.556863, 0.823529, 0.47451, 0 )
+position = Vector2( 278.576, 510.587 )
+scale = Vector2( 0.436535, 0.45469 )
+texture = ExtResource( 6 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 7 )]
+margin_left = 600.0
+margin_top = 250.0
+
+[node name="EndScene" parent="." instance=ExtResource( 3 )]
+margin_left = 600.0
+margin_top = 250.0
+
+[node name="MenuSlide" type="AnimationPlayer" parent="."]
+anims/bg_dull = SubResource( 1 )
+anims/end_scene = SubResource( 2 )
+anims/pause_menu = SubResource( 3 )
+
+[node name="DullAnimation" type="AnimationPlayer" parent="."]
+anims/dull_bg = SubResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="click" type="AudioStreamPlayer" parent="Node2D"]
+
+[node name="blast" type="AudioStreamPlayer" parent="Node2D"]
+
+[connection signal="timer_status_signal" from="Grid" to="Top_ui" method="_on_Grid_timer_status_signal"]
+[connection signal="update_move" from="Grid" to="Top_ui" method="_on_Grid_update_move"]
+[connection signal="update_score" from="Grid" to="Top_ui" method="_on_Grid_update_score"]
+[connection signal="timeout" from="destroy_timer" to="Grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="Grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="Grid" method="_on_refill_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="Top_ui" method="_on_GameTimer_timeout"]

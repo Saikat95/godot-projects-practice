@@ -168,8 +168,8 @@ pitch_scale = 1.5
 stream = ExtResource( 16 )
 attenuation = 0.07966
 
-[connection signal="player_hit" from="Player" to="Background" method="_on_Player_player_hit"]
 [connection signal="player_hit" from="Player" to="SpawnTimer" method="_on_Player_player_hit"]
+[connection signal="player_hit" from="Player" to="Background" method="_on_Player_player_hit"]
 [connection signal="player_hit" from="Player" to="Obstacle" method="_on_Player_player_hit"]
 [connection signal="player_hit" from="Player" to="." method="_on_Player_player_hit"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

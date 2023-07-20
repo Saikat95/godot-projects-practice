@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/bg.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/Music.gd" type="Script" id=2]
+[ext_resource path="res://Assets/click.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/blast.mp3" type="AudioStream" id=4]
+
+[node name="Music" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="click_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="blast_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0

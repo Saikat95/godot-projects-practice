@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scene/SettingScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scene/SplashScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/MainScreenAnimationPlayer.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "mainScreen_ani"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("SplashScreen:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -575, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MusicScreen:offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 575, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="SplashScreen" parent="." instance=ExtResource( 2 )]
+
+[node name="MusicScreen" parent="." instance=ExtResource( 1 )]
+offset = Vector2( 575, 0 )
+transform = Transform2D( 1, 0, 0, 1, 575, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/mainScreen_ani = SubResource( 1 )
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="SplashScreen/MarginContainer/LogoAndButtons/Buttons/Button1" to="." method="_on_playButton_pressed"]
+[connection signal="pressed" from="SplashScreen/MarginContainer/LogoAndButtons/Buttons/Button2" to="." method="_on_settingButton_pressed"]
+[connection signal="pressed" from="MusicScreen/MarginContainer/LogoAndButtons/Buttons/Button2" to="." method="_on_backButton_pressed"]
+
+[editable path="SplashScreen"]
+[editable path="MusicScreen"]
