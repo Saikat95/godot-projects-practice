@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_bullet_whizz_by_001_61427.mp3-dad68410318fac7d37ab64301b690802.mp3str"
+
+[deps]
+
+source_file="res://Assets/zapsplat_warfare_bullet_whizz_by_001_61427.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_bullet_whizz_by_001_61427.mp3-dad68410318fac7d37ab64301b690802.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

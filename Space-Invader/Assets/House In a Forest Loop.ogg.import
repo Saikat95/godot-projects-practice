@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/House In a Forest Loop.ogg-7651dacfd6dcfa1863770f36e0ca2bc5.oggstr"
+
+[deps]
+
+source_file="res://Assets/House In a Forest Loop.ogg"
+dest_files=[ "res://.import/House In a Forest Loop.ogg-7651dacfd6dcfa1863770f36e0ca2bc5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

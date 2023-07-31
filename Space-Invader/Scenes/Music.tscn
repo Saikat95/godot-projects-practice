@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/music_zapsplat_tuff_enough.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/Music.gd" type="Script" id=2]
+[ext_resource path="res://Assets/zapsplat_warfare_bullet_whizz_by_001_61427.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/esm_8bit_splat_bomb_boom_blast_cannon_retro_old_school_classic_cartoon.mp3" type="AudioStream" id=4]
+
+[node name="Music" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="destroy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

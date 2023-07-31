@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/end_scene_bg.png" type="Texture" id=1]
+[ext_resource path="res://Assets/VideoTerminalScreen.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/replay.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/EndScene.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="EndScene" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 343.448, 183.438, 357.761 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 600.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 600, 250 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="TextureRect"]
+anchor_left = 0.354739
+anchor_top = 0.0884507
+anchor_right = 0.624739
+anchor_bottom = 0.214451
+margin_left = -1.52588e-05
+margin_right = -54.0
+margin_bottom = -10.5
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Score" type="Label" parent="TextureRect"]
+anchor_left = 0.358555
+anchor_top = 0.331593
+anchor_right = 0.538555
+anchor_bottom = 0.415593
+custom_fonts/font = SubResource( 1 )
+text = "score"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Health" type="Label" parent="TextureRect"]
+anchor_left = 0.361885
+anchor_top = 0.504127
+anchor_right = 0.541884
+anchor_bottom = 0.588127
+custom_fonts/font = SubResource( 1 )
+text = "health"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Restart" type="TextureButton" parent="TextureRect"]
+anchor_left = 0.443344
+anchor_top = 0.646291
+anchor_right = 0.543344
+anchor_bottom = 0.886291
+margin_left = 131.021
+margin_top = 16.8995
+margin_right = 271.021
+margin_bottom = 156.9
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( -187.173, -24.1422 )
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="TextureRect/Restart" to="." method="_on_Restart_pressed"]

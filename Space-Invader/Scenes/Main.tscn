@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/bg.png" type="Texture" id=1]
+[ext_resource path="res://Assets/ROGFonts-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/resume.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=4]
+[ext_resource path="res://Assets/House In a Forest Loop.ogg" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 163.765
+margin_top = 51.1359
+margin_right = 651.765
+margin_bottom = 110.136
+custom_fonts/font = SubResource( 1 )
+text = "space invader"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 327.628
+margin_top = 162.635
+margin_right = 527.628
+margin_bottom = 362.635
+rect_min_size = Vector2( 150, 150 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
