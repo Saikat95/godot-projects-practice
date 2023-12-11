@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/reload.png" type="Texture" id=1]
+[ext_resource path="res://Script/RestartButton.gd" type="Script" id=2]
+
+[node name="Restart" type="TextureButton"]
+margin_top = 144.0
+margin_right = 585.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_Restart_pressed"]

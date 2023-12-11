@@ -1,0 +1,249 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/heli_body.png" type="Texture" id=1]
+[ext_resource path="res://Assets/heli_blade.png" type="Texture" id=2]
+[ext_resource path="res://Script/Heli.gd" type="Script" id=3]
+[ext_resource path="res://Script/Camera2D.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "blade_swing"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("blade:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "down_to_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "down_to_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "left_to_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "left_to_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "right_to_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, -180.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 94.1078, 32.0346 )
+
+[node name="Heli" type="KinematicBody2D" groups=[
+"Heli_Group",
+]]
+position = Vector2( 369.456, 232.895 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="body" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="blade" type="Sprite" parent="body"]
+position = Vector2( 42.7631, -10.2453 )
+rotation = 6.28319
+scale = Vector2( 0.817366, 0.817366 )
+texture = ExtResource( 2 )
+
+[node name="bladeSwing" type="AnimationPlayer" parent="body"]
+anims/blade_swing = SubResource( 1 )
+
+[node name="rotate" type="AnimationPlayer" parent="body"]
+anims/down = SubResource( 2 )
+anims/down_to_left = SubResource( 3 )
+anims/down_to_right = SubResource( 4 )
+anims/left_to_down = SubResource( 5 )
+anims/left_to_right = SubResource( 6 )
+anims/left_to_up = SubResource( 7 )
+anims/right_to_left = SubResource( 8 )
+anims/right_to_up = SubResource( 9 )
+anims/up = SubResource( 10 )
+anims/up_to_left = SubResource( 11 )
+anims/up_to_right = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.44545, -3.96851 )
+shape = SubResource( 13 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = -445
+limit_top = -545
+limit_right = 2210
+limit_bottom = 1470
+smoothing_enabled = true
+script = ExtResource( 4 )

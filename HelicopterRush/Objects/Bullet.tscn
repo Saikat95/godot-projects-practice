@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/bullet.png" type="Texture" id=1]
+[ext_resource path="res://Script/Bullet.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.4499, 5.6727 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.23237
+
+[node name="Bullet" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.111362, 0.668175 )
+shape = SubResource( 1 )
+
+[node name="RockDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockDetect"]
+position = Vector2( 0, 0.668173 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="RockDetect" to="." method="_on_Area2D_body_entered"]
